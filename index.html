@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Paolo Forin – PhD Candidate in Neurorobotics and Brain-Machine Interfaces at University of Padova." />
+  <meta name="keywords" content="Paolo Forin, BCI, Brain-Machine Interface, Motor Imagery, ROS2, Neurorobotics, University of Padova" />
+  <meta property="og:title" content="Paolo Forin | BCI Researcher & Engineer" />
+  <meta property="og:description" content="PhD Candidate in Neurorobotics at UniPD – BCI, Motor Imagery, ROS2, Deep Learning." />
+  <meta property="og:type" content="profile" />
+  <title>Paolo Forin | BCI Researcher & Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --bg:          #f8f7f4;
+      --surface:     #ffffff;
+      --border:      #e2ddd8;
+      --text:        #1a1714;
+      --text-muted:  #6b6560;
+      --accent:      #1d4ed8;       /* deep blue – neuroscience/tech */
+      --accent-soft: #dbeafe;
+      --accent2:     #7c3aed;       /* violet – BCI paradigms */
+      --tag-bg:      #f1f0ed;
+      --tag-text:    #3d3a36;
+      --nav-h:       60px;
+
+      --serif: 'Source Serif 4', Georgia, serif;
+      --sans:  'Inter', system-ui, sans-serif;
+      --mono:  'JetBrains Mono', monospace;
+
+      --radius: 6px;
+      --shadow: 0 1px 4px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
+    }
+
+    /* ── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NAVBAR ─────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248,247,244,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      display: flex; align-items: center;
+    }
+    .nav-inner {
+      max-width: 1000px; margin: 0 auto; padding: 0 24px;
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -.01em;
+    }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── LAYOUT ─────────────────────────────────────────────── */
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 72px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    #about {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--accent);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .hero-role {
+      font-size: .95rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .hero-bio {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.7;
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      margin-bottom: 28px;
+    }
+    .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+      transition: all .2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #1e40af; text-decoration: none; }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    .avatar-wrap {
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      justify-self: center;
+      background: var(--tag-bg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .avatar-placeholder {
+      font-family: var(--serif);
+      font-size: 4rem;
+      color: var(--accent);
+      font-weight: 300;
+    }
+
+    /* ── SECTION TITLES ─────────────────────────────────────── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 600;
+      letter-spacing: -.015em;
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+
+    /* ── EDUCATION ──────────────────────────────────────────── */
+    .edu-list { display: flex; flex-direction: column; gap: 20px; }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 20px;
+      align-items: start;
+    }
+    .edu-year {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--text-muted);
+      padding-top: 3px;
+      white-space: nowrap;
+    }
+    .edu-degree { font-weight: 600; font-size: .95rem; }
+    .edu-uni { color: var(--text-muted); font-size: .88rem; margin-top: 2px; }
+
+    /* ── PROJECTS ───────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .project-card:hover {
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+    }
+    .project-tag {
+      font-family: var(--mono);
+      font-size: .68rem;
+      color: var(--accent2);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .project-title {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .project-desc {
+      font-size: .85rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .project-links { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .project-link {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+
+    /* ── PUBLICATIONS ───────────────────────────────────────── */
+    .pub-list { display: flex; flex-direction: column; gap: 16px; }
+    .pub-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+    }
+    .pub-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: .65rem;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: .04em;
+    }
+    .pub-title { font-weight: 600; font-size: .92rem; margin-bottom: 4px; }
+    .pub-meta { font-size: .82rem; color: var(--text-muted); }
+    .pub-scholar {
+      margin-top: 24px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: all .2s;
+    }
+    .pub-scholar:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ── SKILLS ─────────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .skill-group { }
+    .skill-group-title {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-family: var(--mono);
+      font-size: .73rem;
+      padding: 4px 10px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── GITHUB REPOS ───────────────────────────────────────── */
+    .repos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .repo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: box-shadow .2s;
+    }
+    .repo-card:hover { box-shadow: var(--shadow); }
+    .repo-name {
+      font-family: var(--mono);
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .repo-desc { font-size: .82rem; color: var(--text-muted); line-height: 1.5; }
+    .repo-lang {
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--text-muted);
+      display: flex; align-items: center; gap: 5px;
+    }
+    .lang-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* ── HOBBIES ────────────────────────────────────────────── */
+    .hobby-list {
+      display: flex; gap: 24px; flex-wrap: wrap;
+    }
+    .hobby-item {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      font-weight: 500;
+      font-size: .9rem;
+    }
+    .hobby-icon { font-size: 1.4rem; }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; }
+    .footer-links a { color: var(--text-muted); font-size: 1.1rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .avatar-wrap { width: 140px; height: 140px; order: -1; }
+      .nav-links { display: none; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ──────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">Paolo Forin</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#github">GitHub</a></li>
+      <li><a href="#hobbies">Interests</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO / ABOUT ─────────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">PhD Candidate · University of Padova</p>
+        <h1 class="hero-name">Paolo Forin</h1>
+        <p class="hero-role">
+          Neurorobotics &amp; Brain-Machine Interface Researcher<br>
+          <span style="font-family: var(--mono); font-size:.8rem; color: var(--accent2);">Motor Imagery · CVSA · ROS2 · Deep Learning</span>
+        </p>
+        <p class="hero-bio">
+          I build bridges between brains and machines. As a PhD candidate at UniPD, I design real-time BCI systems using endogenous paradigms — motor imagery and covert visuospatial attention — to let people control robotic arms, navigate virtual environments, and interact with the world in entirely new ways. A C++/Python engineer at heart, with a soft spot for elegant Linux setups and well-containerised code.
+        </p>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="assets/CV_PaoloForin.pdf" download>
+            <i class="fas fa-download"></i> Download CV
+          </a>
+          <a class="btn btn-outline" href="mailto:forin.paolo98@gmail.com">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/paoloforin" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a class="btn btn-outline" href="https://github.com/PaoloFori" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="avatar-wrap">
+           <img src="assets/img/profile.jpeg" alt="Paolo Forin" />
+          <!-- <span class="avatar-placeholder">PF</span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ─────────────────────────────────────────────── -->
+<section id="education">
+  <div class="container">
+    <p class="section-label">Academic Path</p>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-list">
+
+      <div class="edu-card">
+        <span class="edu-year">2023 – present</span>
+        <div>
+          <div class="edu-degree">PhD in Neurorobotics &amp; Brain-Machine Interfaces</div>
+          <div class="edu-uni">University of Padova — Department of Information Engineering</div>
+          <div class="edu-uni" style="margin-top:6px; font-size:.82rem;">
+            Research focus: endogenous BCI paradigms (Motor Imagery &amp; Covert Visuospatial Attention) for real-time robotic control, collaborative BCI, and immersive VR integration.
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-year">2021 – 2023</span>
+        <div>
+          <div class="edu-degree">M.Sc. in Computer Engineering — AI &amp; Robotics</div>
+          <div class="edu-uni">University of Padova (UniPD)</div>
+          <div class="edu-uni" style="margin-top:6px; font-size:.82rem;">
+            Curriculum in Artificial Intelligence &amp; Robotics: machine learning, deep learning, autonomous systems, computer vision, and human-robot interaction.
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-year">2018 – 2021</span>
+        <div>
+          <div class="edu-degree">B.Sc. in Computer Engineering</div>
+          <div class="edu-uni">University of Padova (UniPD)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ──────────────────────────────────────────────── -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Research &amp; Engineering</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-tag">BCI · CVSA · Robotics</div>
+        <div class="project-title">Real-Time Robotic Arm Control via CVSA</div>
+        <div class="project-desc">
+          A BCI system based on Covert VisuoSpatial Attention for real-time, continuous control of a robotic arm — no motor movement required, just directed visual attention.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">BCI · Collaborative · Robotics</div>
+        <div class="project-title">Real-Time Collaborative BCI for Robotic Arm</div>
+        <div class="project-desc">
+          Multi-user BCI framework where two operators collaboratively control a single robotic arm in real time, merging decoded intentions through a shared control architecture.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">BCI · CVSA · MI · Attention Gate</div>
+        <div class="project-title">CVSA + MI BCI with Attentional Gating</div>
+        <div class="project-desc">
+          Hybrid BCI combining CVSA and Motor Imagery paradigms with an attentional gate mechanism, delivering feedback via monitor display for richer closed-loop interaction.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">BCI · VR · MI · CVSA</div>
+        <div class="project-title">BCI in Virtual Reality (MI + CVSA)</div>
+        <div class="project-desc">
+          Immersive BCI experience combining Motor Imagery and CVSA paradigms inside a VR environment using VRStream, enabling naturalistic brain-controlled navigation and interaction.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">ROS · Neuro · Open Source</div>
+        <div class="project-title">ROSNeuro</div>
+        <div class="project-desc">
+          Contributor to ROSNeuro, the open-source ROS middleware ecosystem for real-time BCI-robot integration, enabling seamless EEG signal processing pipelines within ROS.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/rosneuro" target="_blank"><i class="fab fa-github"></i> Organization</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">ROS2 · Neuro · Open Source</div>
+        <div class="project-title">ROS2Neuro</div>
+        <div class="project-desc">
+          Porting and extending the ROSNeuro ecosystem to ROS2 — bringing real-time BCI middleware capabilities to the modern ROS2 architecture for future-proof neurorobotic systems.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/rosneuro" target="_blank"><i class="fab fa-github"></i> Organization</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Python · Telegram · Docker · NAS</div>
+        <div class="project-title">Telegram Rental Monitor — Padova</div>
+        <div class="project-desc">
+          Automated apartment listing monitor: a Python bot (Telethon + BotFather) that watches Telegram rental groups, extracts structured data with Claude AI, and sends smart notifications — deployed via Docker on a Synology NAS.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PUBLICATIONS ──────────────────────────────────────────── -->
+<section id="publications">
+  <div class="container">
+    <p class="section-label">Research Output</p>
+    <h2 class="section-title">Publications</h2>
+    <div class="pub-list">
+
+      <!-- Add your publications here. Example entry below: -->
+      <div class="pub-item">
+        <span class="pub-badge">In preparation / coming soon</span>
+        <div class="pub-title">Publications will appear here</div>
+        <div class="pub-meta">Check Google Scholar for the full and up-to-date list of my research output.</div>
+      </div>
+
+      <!--
+      <div class="pub-item">
+        <span class="pub-badge">Conference 2024</span>
+        <div class="pub-title">Your Paper Title Here</div>
+        <div class="pub-meta">P. Forin, Co-Author, ... · <em>Venue Name</em>, Year</div>
+      </div>
+      -->
+
+    </div>
+    <div style="margin-top: 24px;">
+      <a class="pub-scholar" href="https://scholar.google.com/citations?user=KEpRsWsAAAAJ&hl=it&oi=ao" target="_blank">
+        <i class="fas fa-graduation-cap"></i>
+        View all publications on Google Scholar
+        <i class="fas fa-arrow-right" style="font-size:.75rem;"></i>
+      </a>
+      <!-- Replace YOURID with your actual Google Scholar user ID -->
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ────────────────────────────────────────────────── -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Toolbox</p>
+    <h2 class="section-title">Skills &amp; Tools</h2>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">C++</span>
+          <span class="tag">C</span>
+          <span class="tag">MATLAB</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">BCI &amp; Neuro</div>
+        <div class="skill-tags">
+          <span class="tag">EEG</span>
+          <span class="tag">Motor Imagery</span>
+          <span class="tag">CVSA</span>
+          <span class="tag">BCI</span>
+          <span class="tag">ERPs</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Robotics &amp; Middleware</div>
+        <div class="skill-tags">
+          <span class="tag">ROS1</span>
+          <span class="tag">ROS2</span>
+          <span class="tag">ROSNeuro</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">AI &amp; ML</div>
+        <div class="skill-tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">Keras</span>
+          <span class="tag">Deep Learning</span>
+          <span class="tag">Machine Learning</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Systems &amp; DevOps</div>
+        <div class="skill-tags">
+          <span class="tag">Linux</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Distrobox</span>
+          <span class="tag">Git</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Other</div>
+        <div class="skill-tags">
+          <span class="tag">VR / VRStream</span>
+          <span class="tag">Telethon</span>
+          <span class="tag">LaTeX</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── GITHUB ────────────────────────────────────────────────── -->
+<section id="github">
+  <div class="container">
+    <p class="section-label">Open Source</p>
+    <h2 class="section-title">GitHub Repositories</h2>
+    <div class="repos-grid" id="repos-container">
+      <p style="color: var(--text-muted); font-size:.88rem;">Loading repositories from GitHub…</p>
+    </div>
+    <div style="margin-top: 24px;">
+      <a class="btn btn-outline" href="https://github.com/PaoloFori" target="_blank">
+        <i class="fab fa-github"></i> View all on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOBBIES ───────────────────────────────────────────────── -->
+<section id="hobbies">
+  <div class="container">
+    <p class="section-label">Beyond the Lab</p>
+    <h2 class="section-title">Interests &amp; Hobbies</h2>
+    <div class="hobby-list">
+      <div class="hobby-item">
+        <span class="hobby-icon">🏋️</span>
+        <div>
+          <div style="font-weight:600;">Gym &amp; Training</div>
+          <div style="font-size:.82rem; color:var(--text-muted);">Strength training, consistency, discipline</div>
+        </div>
+      </div>
+      <div class="hobby-item">
+        <span class="hobby-icon">✈️</span>
+        <div>
+          <div style="font-weight:600;">Travel</div>
+          <div style="font-size:.82rem; color:var(--text-muted);">Discovering new places and cultures</div>
+        </div>
+      </div>
+      <div class="hobby-item">
+        <span class="hobby-icon">🍳</span>
+        <div>
+          <div style="font-weight:600;">Cooking</div>
+          <div style="font-size:.82rem; color:var(--text-muted);">Italian classics and kitchen experiments</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/PaoloFori" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/paoloforin" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://scholar.google.com/citations?user=KEpRsWsAAAAJ&hl=it&oi=ao" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+      <a href="mailto:forin.paolo98@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>© 2025 Paolo Forin · Built with HTML &amp; hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+  </div>
+</footer>
+
+<script>
+  // ── GitHub Repos (live from API) ───────────────────────────
+  async function loadRepos() {
+    const container = document.getElementById('repos-container');
+    const langColors = {
+      'Python': '#3572A5', 'C++': '#f34b7d', 'C': '#555555',
+      'MATLAB': '#e16737', 'JavaScript': '#f1e05a', 'HTML': '#e34c26',
+      'Shell': '#89e051', 'CMake': '#DA3434'
+    };
+    try {
+      const res = await fetch('https://api.github.com/users/PaoloFori/repos?sort=updated&per_page=6');
+      const repos = await res.json();
+      if (!Array.isArray(repos) || repos.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-muted)">No public repositories yet — check back soon!</p>';
+        return;
+      }
+      container.innerHTML = repos.slice(0,6).map(r => `
+        <a href="${r.html_url}" target="_blank" class="repo-card" style="text-decoration:none; color:inherit;">
+          <div class="repo-name"><i class="fas fa-book-open" style="font-size:.75rem; margin-right:5px;"></i>${r.name}</div>
+          <div class="repo-desc">${r.description || 'No description yet.'}</div>
+          <div class="repo-lang">
+            ${r.language ? `<span class="lang-dot" style="background:${langColors[r.language] || '#8b8b8b'}"></span>${r.language}` : ''}
+            ${r.stargazers_count ? `<span style="margin-left:auto;"><i class="fas fa-star" style="font-size:.65rem;"></i> ${r.stargazers_count}</span>` : ''}
+          </div>
+        </a>
+      `).join('');
+    } catch(e) {
+      container.innerHTML = '<p style="color:var(--text-muted)">Could not load repositories. <a href="https://github.com/PaoloFori">View on GitHub →</a></p>';
+    }
+  }
+  loadRepos();
+</script>
+
+</body>
+</html>
