@@ -229,6 +229,17 @@
       box-shadow: var(--shadow);
       border-color: var(--accent);
     }
+    .project-category {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 32px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-category:first-child { margin-top: 0; }
     .project-tag {
       font-family: var(--mono);
       font-size: .68rem;
@@ -546,16 +557,20 @@
   <div class="container">
     <p class="section-label">Research &amp; Engineering</p>
     <h2 class="section-title">Projects</h2>
+
+    <!-- ══ PhD PROJECTS ══ -->
+    <div class="project-category">🎓 PhD Projects</div>
     <div class="projects-grid">
 
       <div class="project-card">
-        <div class="project-tag">BCI · CVSA · Robotics</div>
-        <div class="project-title">Real-Time Robotic Arm Control via CVSA</div>
+        <div class="project-tag">BCI · CVSA · QDA · Real-Time</div>
+        <div class="project-title">CVSA BCI — Real-Time Power &amp; QDA Classifier</div>
         <div class="project-desc">
-          A BCI system based on Covert VisuoSpatial Attention for real-time, continuous control of a robotic arm — no motor movement required, just directed visual attention.
+          Real-time BCI based on mean power features and QDA classification for Covert VisuoSpatial Attention, with real audio feedback. Includes calibration and evaluation phases. Used as the basis for a published study.
         </div>
         <div class="project-links">
-          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+          <a class="project-link" href="https://github.com/PaoloFori/cvsa_ws/tree/simple_cvsa" target="_blank"><i class="fab fa-github"></i> Branch: simple_cvsa</a>
+          <a class="project-link" href="https://scholar.google.com/citations?user=KEpRsWsAAAAJ&hl=it&oi=ao" target="_blank"><i class="fas fa-graduation-cap"></i> Publication</a>
         </div>
       </div>
 
@@ -563,32 +578,45 @@
         <div class="project-tag">BCI · Collaborative · Robotics</div>
         <div class="project-title">Real-Time Collaborative BCI for Robotic Arm</div>
         <div class="project-desc">
-          Multi-user BCI framework where two operators collaboratively control a single robotic arm in real time, merging decoded intentions through a shared control architecture.
+          Multi-user BCI framework where two operators collaboratively control a robotic arm in real time, merging decoded intentions through a shared control architecture.
         </div>
         <div class="project-links">
-          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+          <a class="project-link" href="https://ieeexplore.ieee.org/abstract/document/10711648" target="_blank"><i class="fas fa-graduation-cap"></i> Publication</a>
+          <a class="project-link" href="https://www.research.unipd.it/bitstream/11577/3541951/1/9th_bci_conference_063.pdf" target="_blank"><i class="fas fa-graduation-cap"></i> Graz 2024</a>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-tag">BCI · CVSA · MI · Attention Gate</div>
-        <div class="project-title">CVSA + MI BCI with Attentional Gating</div>
+        <div class="project-tag">BCI · CVSA · MI · GMM · Attention Gate</div>
+        <div class="project-title">Attentional Gating BCI (IC-CVSA)</div>
         <div class="project-desc">
-          Hybrid BCI combining CVSA and Motor Imagery paradigms with an attentional gate mechanism, delivering feedback via monitor display for richer closed-loop interaction.
+          BCI with an attentional gate based on a GMM model to detect whether the subject is focused or not. Paper accepted at <strong>Graz BCI Conference 2026</strong>, extended version submitted to IEEE SMC.
         </div>
         <div class="project-links">
-          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+          <a class="project-link" href="https://github.com/PaoloFori/cvsa_ws/tree/ic_cvsa" target="_blank"><i class="fab fa-github"></i> Branch: ic_cvsa</a>
+          <span class="project-link" style="color:var(--text-muted);cursor:default;"><i class="fas fa-clock"></i> Paper coming soon</span>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-tag">BCI · VR · MI · CVSA</div>
+        <div class="project-tag">BCI · VR · MI · CVSA · Lisbon</div>
         <div class="project-title">BCI in Virtual Reality (MI + CVSA)</div>
         <div class="project-desc">
-          Immersive BCI experience combining Motor Imagery and CVSA paradigms inside a VR environment using VRStream, enabling naturalistic brain-controlled navigation and interaction.
+          Immersive BCI combining Motor Imagery and CVSA inside a VR environment using VRStream. Developed during a research period abroad in <strong>Lisbon, Portugal</strong> (Feb–Sep 2026).
         </div>
         <div class="project-links">
-          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+          <a class="project-link" href="https://github.com/PaoloFori/bci_vr_ws" target="_blank"><i class="fab fa-github"></i> Repository</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">BCI · ML vs DL · Motor Imagery · In Progress</div>
+        <div class="project-title">ML vs DL for Real-Time MI BCI</div>
+        <div class="project-desc">
+          Ongoing research comparing traditional machine learning and deep learning models for real-time Motor Imagery BCI decoding. In collaboration with <strong>IASLab, University of Padova</strong>.
+        </div>
+        <div class="project-links">
+          <span class="project-link" style="color:var(--text-muted);cursor:default;"><i class="fas fa-spinner"></i> Work in progress</span>
         </div>
       </div>
 
@@ -607,25 +635,94 @@
         <div class="project-tag">ROS2 · Neuro · Open Source</div>
         <div class="project-title">ROS2Neuro</div>
         <div class="project-desc">
-          Porting and extending the ROSNeuro ecosystem to ROS2 — bringing real-time BCI middleware capabilities to the modern ROS2 architecture for future-proof neurorobotic systems.
+          Porting and extending the ROSNeuro ecosystem to ROS2, bringing real-time BCI middleware to the modern ROS2 architecture. Repository coming soon.
         </div>
         <div class="project-links">
-          <a class="project-link" href="https://github.com/rosneuro" target="_blank"><i class="fab fa-github"></i> Organization</a>
+          <span class="project-link" style="color:var(--text-muted);cursor:default;"><i class="fas fa-clock"></i> Coming soon</span>
         </div>
       </div>
+
+    </div>
+
+    <!-- ══ DEGREE PROJECTS ══ -->
+    <div class="project-category" style="margin-top:40px;">🎓 Degree Projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-tag">BCI · Motor Imagery · M.Sc. Thesis</div>
+        <div class="project-title">Online 2-Class MI BCI: Dynamic vs Exponential Control</div>
+        <div class="project-desc">
+          Master's thesis: comparison between a dynamic control model and an exponential method for online continuous control in a 2-class Motor Imagery BCI. Graduated <strong>110/110 cum Laude</strong>.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori/Continuous_control_wheelchair_bmi" target="_blank"><i class="fab fa-github"></i> Repository (private)</a>
+          <a class="project-link" href="https://www.research.unipd.it/handle/11577/3506808" target="_blank"><i class="fas fa-graduation-cap"></i> Related pub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Kubernetes · Microservices · B.Sc. Thesis</div>
+        <div class="project-title">Theatre Ticketing Orchestrator (Kubernetes)</div>
+        <div class="project-desc">
+          Bachelor's thesis: a Kubernetes-based orchestrator for managing a simulated theatre reservation system, exploring microservices and container orchestration at scale. Graduated <strong>102/110</strong>.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori/Simulation_theater_reservations" target="_blank"><i class="fab fa-github"></i> Repository</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Computer Vision · HOG · YOLO · M.Sc. Course</div>
+        <div class="project-title">Boat Detector</div>
+        <div class="project-desc">
+          Boat detection system using HOG feature descriptors, developed for the Computer Vision course (M.Sc.). Focuses on robust feature extraction in challenging maritime visual conditions.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori/boat_detector" target="_blank"><i class="fab fa-github"></i> Repository</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Computer Vision · HOG · YOLO · B.Sc. Course</div>
+        <div class="project-title">Vehicle Counting with HOG &amp; YOLO</div>
+        <div class="project-desc">
+          Vehicle detection and counting system combining HOG descriptors and YOLO object detection, developed for the Artificial Intelligence course (B.Sc.).
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori/vehicle_counting_HOG_YOLO" target="_blank"><i class="fab fa-github"></i> Repository</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══ EXTRA PROJECTS ══ -->
+    <div class="project-category" style="margin-top:40px;">⚡ Extra Projects</div>
+    <div class="projects-grid">
 
       <div class="project-card">
         <div class="project-tag">Python · Telegram · Docker · NAS</div>
         <div class="project-title">Telegram Rental Monitor — Padova</div>
         <div class="project-desc">
-          Automated apartment listing monitor: a Python bot (Telethon + BotFather) that watches Telegram rental groups, extracts structured data with Claude AI, and sends smart notifications — deployed via Docker on a Synology NAS.
+          Automated apartment listing monitor: a Python bot (Telethon) that watches Telegram rental groups, extracts structured data with AI, and sends smart notifications — deployed via Docker on a Synology NAS.
         </div>
         <div class="project-links">
-          <a class="project-link" href="https://github.com/PaoloFori" target="_blank"><i class="fab fa-github"></i> Repo</a>
+          <a class="project-link" href="https://github.com/PaoloFori/telegram-rental-bot" target="_blank"><i class="fab fa-github"></i> Repository</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Python · OOP · PhD Course</div>
+        <div class="project-title">Pykemon — Pokémon Battle Simulator</div>
+        <div class="project-desc">
+          Python-based Pokémon battle simulator built for the Python course during the PhD. A deep-dive into object-oriented design, game logic, and clean Python architecture.
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/PaoloFori/pykemon" target="_blank"><i class="fab fa-github"></i> Repository</a>
         </div>
       </div>
 
     </div>
+
   </div>
 </section>
 
