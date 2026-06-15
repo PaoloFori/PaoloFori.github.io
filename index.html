@@ -291,6 +291,15 @@
       transition: all .2s;
     }
     .pub-scholar:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .pub-badge.green  { background: #dcfce7; color: #166534; }
+    .pub-badge.orange { background: #ffedd5; color: #9a3412; }
+    .award-tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: .72rem; font-weight: 600;
+      padding: 3px 9px; border-radius: 20px;
+      background: #fef9c3; color: #854d0e;
+      margin-top: 6px; margin-right: 4px;
+    }
 
     /* ── SKILLS ─────────────────────────────────────────────── */
     .skills-grid {
@@ -400,6 +409,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -469,10 +479,14 @@
       <div class="edu-card">
         <span class="edu-year">2021 – 2023</span>
         <div>
-          <div class="edu-degree">M.Sc. in Computer Engineering — AI &amp; Robotics</div>
+          <div class="edu-degree">M.Sc. in Computer Engineering — AI &amp; Robotics <span style="font-family:var(--mono);font-size:.75rem;color:var(--accent);margin-left:8px;">110/110 cum Laude</span></div>
           <div class="edu-uni">University of Padova (UniPD)</div>
           <div class="edu-uni" style="margin-top:6px; font-size:.82rem;">
             Curriculum in Artificial Intelligence &amp; Robotics: machine learning, deep learning, autonomous systems, computer vision, and human-robot interaction.
+          </div>
+          <div class="edu-uni" style="margin-top:8px; font-size:.82rem;">
+            <strong>Thesis:</strong> Comparison between a dynamic control model and an exponential method for online 2-class Motor Imagery BCI.
+            <a href="https://github.com/PaoloFori/Continuous_control_wheelchair_bmi" target="_blank" style="margin-left:6px;"><i class="fab fa-github"></i> Repository (private)</a>
           </div>
         </div>
       </div>
@@ -480,8 +494,46 @@
       <div class="edu-card">
         <span class="edu-year">2018 – 2021</span>
         <div>
-          <div class="edu-degree">B.Sc. in Computer Engineering</div>
+          <div class="edu-degree">B.Sc. in Computer Engineering <span style="font-family:var(--mono);font-size:.75rem;color:var(--accent);margin-left:8px;">102/110</span></div>
           <div class="edu-uni">University of Padova (UniPD)</div>
+          <div class="edu-uni" style="margin-top:8px; font-size:.82rem;">
+            <strong>Thesis:</strong> Kubernetes-based orchestrator for theatre ticketing system management.
+            <a href="https://github.com/PaoloFori/Simulation_theater_reservations" target="_blank" style="margin-left:6px;"><i class="fab fa-github"></i> Repository</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ─────────────────────────────────────────────── -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Research Experience</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="edu-list">
+
+      <div class="edu-card">
+        <span class="edu-year">Feb 2026 – Sep 2026</span>
+        <div>
+          <div class="edu-degree">Visiting Researcher — BCI &amp; Virtual Reality</div>
+          <div class="edu-uni">Research period abroad · Lisbon, Portugal</div>
+          <div class="edu-uni" style="margin-top:6px; font-size:.82rem;">
+            International research period focused on the integration of BCI systems combining Motor Imagery and Covert VisuoSpatial Attention paradigms with immersive Virtual Reality environments using VRStream.
+            <a href="https://github.com/PaoloFori/bci_vr_ws" target="_blank" style="margin-left:6px;"><i class="fab fa-github"></i> Project repo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-year">2023 – present</span>
+        <div>
+          <div class="edu-degree">PhD Researcher — IASLab</div>
+          <div class="edu-uni">Intelligent Autonomous Systems Lab · University of Padova</div>
+          <div class="edu-uni" style="margin-top:6px; font-size:.82rem;">
+            Design and development of real-time BCI systems based on endogenous paradigms (MI, CVSA). Contributor to the ROSNeuro and ROS2Neuro open-source ecosystems.
+          </div>
         </div>
       </div>
 
@@ -584,20 +636,72 @@
     <h2 class="section-title">Publications</h2>
     <div class="pub-list">
 
-      <!-- Add your publications here. Example entry below: -->
+      <!-- ── ACCEPTED / IN PRESS ── -->
       <div class="pub-item">
-        <span class="pub-badge">In preparation / coming soon</span>
-        <div class="pub-title">Publications will appear here</div>
-        <div class="pub-meta">Check Google Scholar for the full and up-to-date list of my research output.</div>
+        <span class="pub-badge green">Conference 2026 — Accepted</span>
+        <div class="pub-title">Attentional Gating for CVSA-Based BCI Using GMM Classification</div>
+        <div class="pub-meta">
+          <strong>P. Forin</strong>, et al. · <em>Graz Brain-Computer Interface Conference 2026</em> · Accepted, publication pending.
+        </div>
       </div>
 
-      <!--
+      <!-- ── SUBMITTED ── -->
       <div class="pub-item">
-        <span class="pub-badge">Conference 2024</span>
-        <div class="pub-title">Your Paper Title Here</div>
-        <div class="pub-meta">P. Forin, Co-Author, ... · <em>Venue Name</em>, Year</div>
+        <span class="pub-badge orange">Submitted — Under Review</span>
+        <div class="pub-title">Attentional Gating BCI — Extended Study</div>
+        <div class="pub-meta">
+          <strong>P. Forin</strong>, et al. · <em>IEEE International Conference on Systems, Man, and Cybernetics (SMC)</em> · Submitted, awaiting decision.
+        </div>
       </div>
-      -->
+
+      <!-- ── PUBLISHED ── -->
+      <div class="pub-item">
+        <span class="pub-badge">IEEE Conference 2025</span>
+        <div class="pub-title">Towards a Shift and Sustain-Based Decoding Architecture for Covert Visuospatial Attention BMI in a Natural Environment</div>
+        <div class="pub-meta">
+          <strong>P. Forin</strong>, et al. · <em>IEEE</em>, 2025 ·
+          <a href="https://ieeexplore.ieee.org/abstract/document/11343392" target="_blank"><i class="fas fa-external-link-alt" style="font-size:.7rem;"></i> IEEE Xplore</a>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-badge">IEEE Conference 2024</span>
+        <div class="pub-title">Optimization and Evaluation of the Control Framework for Brain-Machine Interfaces</div>
+        <div class="pub-meta">
+          <strong>P. Forin</strong>, et al. · <em>IEEE</em>, 2024 ·
+          <a href="https://ieeexplore.ieee.org/abstract/document/10711648" target="_blank"><i class="fas fa-external-link-alt" style="font-size:.7rem;"></i> IEEE Xplore</a>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-badge">Graz BCI Conference 2024</span>
+        <div class="pub-title">An Alternative Training Protocol for a Motor Imagery BMI Based on a Collaborative Approach</div>
+        <div class="pub-meta">
+          A. Palatella, <strong>P. Forin</strong>, S. Tortora, E. Menegatti, L. Tonin ·
+          <em>9th Graz Brain-Computer Interface Conference 2024</em> · DOI: 10.3217/978-3-99161-014-4-063 ·
+          <a href="https://www.research.unipd.it/bitstream/11577/3541951/1/9th_bci_conference_063.pdf" target="_blank"><i class="fas fa-file-pdf" style="font-size:.7rem;"></i> PDF</a>
+          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=it&user=KEpRsWsAAAAJ&citation_for_view=KEpRsWsAAAAJ:9yKSN-GCB0IC" target="_blank" style="margin-left:8px;"><i class="fas fa-external-link-alt" style="font-size:.7rem;"></i> Scholar</a>
+        </div>
+        <div style="margin-top:8px;">
+          <span class="award-tag"><i class="fas fa-trophy"></i> 3rd place — ICRA 2025 Workshop Poster</span>
+          <span class="award-tag"><i class="fas fa-medal"></i> 3rd place — ICRA 2025 EXPO Competition</span>
+          <a href="https://neurodesign-in-hri.webflow.io/" target="_blank"
+             style="display:inline-flex;align-items:center;gap:4px;font-size:.75rem;font-weight:600;color:var(--accent);margin-top:4px;">
+            <i class="fas fa-external-link-alt" style="font-size:.65rem;"></i> NeuroDesign in HRI Workshop @ ICRA 2025
+          </a>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-badge">CEUR Workshop 2023</span>
+        <div class="pub-title">Optimising the Continuous Control of Brain-Actuated Robotic Devices</div>
+        <div class="pub-meta">
+          G. Beraldo, <strong>P. Forin</strong>, L. Tonin ·
+          <em>CEUR Workshop Proceedings</em>, Vol. 3417, pp. 8–18, 2023 ·
+          <a href="https://www.research.unipd.it/handle/11577/3506808" target="_blank"><i class="fas fa-external-link-alt" style="font-size:.7rem;"></i> UniPD Research</a>
+          <a href="https://www.research.unipd.it/bitstream/11577/3506808/2/short2.pdf" target="_blank" style="margin-left:8px;"><i class="fas fa-file-pdf" style="font-size:.7rem;"></i> PDF</a>
+        </div>
+      </div>
 
     </div>
     <div style="margin-top: 24px;">
@@ -606,7 +710,6 @@
         View all publications on Google Scholar
         <i class="fas fa-arrow-right" style="font-size:.75rem;"></i>
       </a>
-      <!-- Replace YOURID with your actual Google Scholar user ID -->
     </div>
   </div>
 </section>
